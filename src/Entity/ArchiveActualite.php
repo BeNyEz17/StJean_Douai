@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ActualiteRepository;
+use App\Repository\ArchiveActualiteRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ActualiteRepository::class)
+ * @ORM\Entity(repositoryClass=ArchiveActualiteRepository::class)
  */
-class Actualite
+class ArchiveActualite
 {
     /**
      * @ORM\Id
@@ -71,7 +71,7 @@ class Actualite
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 

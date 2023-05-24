@@ -6,6 +6,7 @@ use App\Entity\Actualite;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
 
@@ -17,6 +18,13 @@ class ActualiteType extends AbstractType
         $builder
             ->add('titre')
             ->add('description')
+            ->add('date', DateTimeType::class, [
+                'widget' => 'single_text',
+    'label' => 'Date',
+    'attr' => [
+        'class' => 'flatpickr-input',
+    ],
+            ])
             ->add('image', FileType::class, [
                 'label' => 'Image',
                 'required' => true,
@@ -37,6 +45,7 @@ class ActualiteType extends AbstractType
                     'data-content' => 'La taille maximale d\'une image est de 1 Mo.',
                 ],
             ]);
+            
     }
     public function configureOptions(OptionsResolver $resolver): void
     {

@@ -24,6 +24,19 @@
         </div>
 
         <div class="mb-3">
+            {{ form_label(form.date, 'Date :') }}
+            {{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}
+
+            {% if form.date.vars.errors|length > 0 %}
+                <div class="alert alert-danger mt-2">
+                    {% for error in form.date.vars.errors %}
+                        {{ error.message }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="mb-3">
             {{ form_label(form.image, 'Image :') }}
             {{ form_widget(form.image, {'attr': {'class': 'form-control-file'}}) }}
 
