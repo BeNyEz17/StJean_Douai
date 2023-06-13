@@ -28,7 +28,7 @@ class ActualiteController extends AbstractController
             $file = $form->get('image')->getData();
 
             // Générez un nom unique pour le fichier
-            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+            $fileName = $file->getClientOriginalName();
 
             // Déplacez le fichier dans le répertoire de destination
             try {
@@ -40,7 +40,8 @@ class ActualiteController extends AbstractController
                 // Gérer les exceptions liées au téléchargement du fichier
                 // Par exemple, tu peux ajouter un message flash d'erreur
                 $this->addFlash('error', 'Une erreur s\'est produite lors du téléchargement du fichier.');
-                return $this->redirect($request->getUri());            }
+                return $this->redirect($request->getUri());
+            }
 
             // Mettez à jour l'entité avec le nom du fichier
             $actualite->setImage($fileName);
@@ -52,7 +53,7 @@ class ActualiteController extends AbstractController
 
             $this->addFlash('success', 'Actualité créée avec succès.');
 
-            return $this->redirect($request->getUri());        
+            return $this->redirect($request->getUri());
         }
 
         return $this->render('index.html.twig', [
