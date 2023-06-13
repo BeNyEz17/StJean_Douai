@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\ActualiteRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass=ActualiteRepository::class)
@@ -19,21 +20,25 @@ class Actualite
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("actualite:read")
      */
     private $titre;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("actualite:read")
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("actualite:read")
      */
     private $image;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups("actualite:read")
      */
     private $date;
 
