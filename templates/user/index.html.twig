@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="mt-3">Créer un utilisateur</h1>
+
+        {% if app.flashes('success') is not empty %}
+            <div class="alert alert-success mt-3" style="background-color: #800080;">
+                {% for flashMessage in app.session.flashBag.get('success') %}
+                    {{ flashMessage }}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {{ form_start(form) }}
+        <div class="mb-3">
+            {{ form_label(form.nom, 'Nom :') }}
+            {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(form.prenom, 'Prénom :') }}
+            {{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(form.email, 'Email :') }}
+            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(form.mot_de_passe, 'Mot de passe :') }}
+            {{ form_widget(form.mot_de_passe, {'attr': {'class': 'form-control', 'autocomplete': 'new-password'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(form.adresse, 'Adresse :') }}
+            {{ form_widget(form.adresse, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(form.date_de_naissance, 'Date de naissance :') }}
+            {{ form_widget(form.date_de_naissance, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="background-color: #800080; border-color: #800080;">Envoyer</button>
+        {{ form_end(form) }}
+    </div>
+
+    <script>
+        $(function () {
+            $('[data-toggle="popover"]').popover();
+        });
+    </script>
+{% endblock %}

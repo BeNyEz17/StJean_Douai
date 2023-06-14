@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ActualiteController extends AbstractController
 {
     /**
-     * @Route("/", name="app_actualite_index", methods={"GET", "POST"})
+     * @Route("", name="app_actualite_index", methods={"GET", "POST"})
      */
     public function index(Request $request): Response
     {
