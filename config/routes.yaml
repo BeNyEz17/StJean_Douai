@@ -6,3 +6,13 @@ api_actualites:
     path: /api/actualites
     controller: App\Controller\ApiActualiteController::index
     methods: GET
+
+import_user_csv:
+    path: /import_user_csv
+    controller: App\Controller\CSVImportUserController::import
+    methods: [GET, POST]
+
+ajout_user:
+    path: /ajout_user
+    controller: App\Controller\UserController::ajoutUser
+    methods: [GET, POST]

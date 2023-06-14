@@ -90,12 +90,13 @@ class User
 
     public function getMotDePasse(): ?string
     {
+        
         return $this->mot_de_passe;
     }
 
     public function setMotDePasse(?string $mot_de_passe): self
     {
-        $this->mot_de_passe = $mot_de_passe;
+        $this->mot_de_passe = password_hash($mot_de_passe, PASSWORD_DEFAULT);
 
         return $this;
     }

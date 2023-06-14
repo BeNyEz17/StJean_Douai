@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="mt-3">Importation CSV</h1>
+
+        {% if app.flashes('success') is not empty %}
+            <div class="alert alert-success mt-3">
+                {% for flashMessage in app.session.flashBag.get('success') %}
+                    {{ flashMessage }}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {{ form_start(form) }}
+        <div class="mb-3">
+            {{ form_label(form.csv_file, 'Fichier CSV :') }}
+            {{ form_widget(form.csv_file, {'attr': {'class': 'form-control-file'}}) }}
+
+            {% if form.csv_file.vars.errors|length > 0 %}
+                <div class="alert alert-danger mt-2">
+                    {% for error in form.csv_file.vars.errors %}
+                        {{ error.message }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="background-color: #800080; border-color: #800080;">Importer</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

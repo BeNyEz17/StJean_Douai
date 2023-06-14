@@ -22,16 +22,16 @@ class UserController extends AbstractController
         $form = $this->createForm(UserType::class, $user);
 
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            // Traitez les données du formulaire ici, par exemple :
-            // $entityManager = $this->getDoctrine()->getManager();
-            // $entityManager->persist($user);
-            // $entityManager->flush();
+       if ($form->isSubmitted() && $form->isValid()) {
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($user);
+        $entityManager->flush();
 
-            $this->addFlash('success', 'Utilisateur créé avec succès.');
+    $this->addFlash('success', 'Utilisateur créé avec succès.');
 
-            return $this->redirectToRoute('ajout_user');
-        }
+    return $this->redirectToRoute('ajout_user');
+}
+
 
         return $this->render('user/index.html.twig', [
             'form' => $form->createView(),
