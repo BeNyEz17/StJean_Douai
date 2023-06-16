@@ -7,6 +7,11 @@ api_actualites:
     controller: App\Controller\ApiActualiteController::index
     methods: GET
 
+api_user:
+    path: /api/user
+    controller: App\Controller\ApiUserController::index
+    methods: GET
+
 import_user_csv:
     path: /import_user_csv
     controller: App\Controller\CSVImportUserController::import
